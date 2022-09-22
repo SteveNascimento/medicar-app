@@ -11,16 +11,11 @@ export class AccountService {
 
   constructor(private httpServer: HttpClient) { }
 
-  /**
-   * login
-   */
   public login(user: {username: string, password: string}) {    
     return this.httpServer.post(`${this.API}/users/login`,{...user});
   }
   
-  public createAccount(user: {name: string, email: string, password: string}) {
-    return new Promise((resolve) => {
-      resolve(true)
-    })
+  public register(user: {username: string, email: string, password: string}) {
+    return this.httpServer.post(`${this.API}/users`, {...user});
   }
 }

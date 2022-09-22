@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/services/account.service';
 
@@ -13,7 +14,12 @@ export class LoginComponent implements OnInit {
   public hide: boolean = true;
   formulario: FormGroup = new FormGroup({});
 
-  constructor(private router: Router, private accountService: AccountService, private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private accountService: AccountService,
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
+  ) { }
   
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -26,24 +32,22 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
+  public openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   async onSubmit() {
-    try {
-      this.accountService.login(this.formulario.value).subscribe(
-        (values: any) => {
-          window.localStorage.setItem('token', values.token)
-          this.router.navigate([''])
-        },
-        () => {
-          this.formulario.controls['username'].setErrors({'incorrect': true})
-          this.formulario.controls['password'].setErrors({'incorrect': true})
-        }
-      )
-      
-      //this.router.navigate(['']);
-    } catch (error) {
-      console.log('entrei aq');
-    }
-    
+    this.accountService.login(this.formulario.value).subscribe(
+      (values: any) => {
+        window.localStorage.setItem('token', values.token)
+        this.router.navigate([''])
+      },
+      () => {
+        this.openSnackBar("Usuário ou senha incorretos","Dispensar");
+        this.formulario.controls['username'].setErrors({'incorrect': true})
+        this.formulario.controls['password'].setErrors({'incorrect': true})
+      }
+    )
   }
 
 }
