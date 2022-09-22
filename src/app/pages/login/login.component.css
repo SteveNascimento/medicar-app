@@ -1,0 +1,46 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 410px;
+}
+
+mat-card-title {
+    display: flex;
+    align-items: center;
+}
+
+mat-card-title span {
+    margin-left: 12.5px;
+    color: #444444;
+}
+
+mat-card-content {
+    margin-top: 40px;
+}
+
+mat-checkbox {
+    margin-top: 20px;
+    margin-left: 10px;
+
+}
+
+mat-form-field {
+    height: 40px;
+    width: 400px;
+    margin-top: 40px;
+}
+
+.buttonSubmit {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.buttonSubmit button {
+    width: 180px;
+}
