@@ -1,1 +1,9 @@
-<p>deletar-consulta works!</p>
+<h3 class="titleDialog">Tem certeza que deseja desmarcar esta consulta?</h3>
+<div class="buttonSubmit">
+    <button mat-stroked-button color="primary" mat-dialog-close>
+        Cancelar
+    </button>
+    <button mat-dialog-close mat-raised-button (click)="deletarConsulta()" color="primary" class="buttonConfirm">
+        Confirmar
+    </button>
+</div>

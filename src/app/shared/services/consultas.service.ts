@@ -48,17 +48,9 @@ export class ConsultasService {
   }
   
   public marcarConsulta(payload : {agenda_id: string, horario: string} = {agenda_id: '', horario: ''}): Observable<IResponseMarcarConsulta[]> {
-    console.log({
-          ...payload,
-          ...this.accountService.getHeaders()
-        });
-    
-    return this.httpServer.get<IResponseMarcarConsulta[]>(
-        `${this.API}/consultas/`,
-        {
-          ...payload,
-          ...this.accountService.getHeaders()
-        }
+    return this.httpServer.post<IResponseMarcarConsulta[]>(
+        `${this.API}/consultas/`, { ...payload },
+        this.accountService.getHeaders()
       );
   }
 }

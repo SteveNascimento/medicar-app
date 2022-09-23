@@ -54,7 +54,12 @@ export class ConsultasComponent implements OnInit {
   };
 
   public desmarcarConsulta(id: number) {
-    this.matDialog.open(DeletarConsultaComponent)
+    this.matDialog.open(DeletarConsultaComponent, {
+      data: {
+        consulta_id: id,
+      },
+    });
+
   };
 
   private consultasToTableData(values: IConsulta[]): IConsultaTable[] {
