@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 import { IRequestLogin } from 'src/app/shared/models/IRequestLogin';
 import { AccountService } from 'src/app/shared/services/account.service';
 
@@ -43,17 +44,17 @@ export class LoginComponent implements OnInit {
       username: this.formulario.value.username,
       password: this.formulario.value.password
     }
-    this.accountService.login(valuesToSend).subscribe(
-      (values: any) => {
+    this.accountService.login(valuesToSend).subscribe({
+      next: (values: any) => {
         window.localStorage.setItem('token', values.token)
         this.router.navigate([''])
       },
-      () => {
+      error: () => {
         this.openSnackBar("Usuário ou senha incorretos","Dispensar");
         this.formulario.controls['username'].setErrors({'incorrect': true})
         this.formulario.controls['password'].setErrors({'incorrect': true})
-      }
-    )
+      },
+    })
   }
 
 }

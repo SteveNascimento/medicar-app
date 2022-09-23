@@ -73,15 +73,15 @@ export class RegisterComponent implements OnInit {
       email: this.formulario.value.email,
       password: this.formulario.value.password,
     }
-    this.accountService.register({...formToSend}).subscribe(
-      () => {
+    this.accountService.register({...formToSend}).subscribe({
+      next: () => {
         this.openSnackBar("Usuário criado com sucesso!", "Dispensar");
       },
-      (error) => {
+      error: (error) => {
         console.log(error);
         this.openSnackBar("Algo deu errado! Tente novamente!", "Dispensar");
       }
-    )
+    })
   }
 
 }
