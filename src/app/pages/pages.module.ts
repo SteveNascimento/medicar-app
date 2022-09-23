@@ -7,8 +7,6 @@ import { ConsultasComponent } from './consultas/consultas.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
-import { AccountService } from '../shared/services/account.service';
-import { ServicesModule } from '../shared/services/services.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -25,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     CommonModule,
     MaterialModule,
-    ServicesModule,
     ReactiveFormsModule
   ]
 })

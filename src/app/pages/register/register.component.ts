@@ -54,8 +54,8 @@ export class RegisterComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', Validators.required],
-      passwordConfirm: ['', [Validators.required, this.equalsTo('password')]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirm: ['', [Validators.required, this.equalsTo('password'), Validators.minLength(8)]]
     });
   }
 

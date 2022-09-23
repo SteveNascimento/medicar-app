@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { IRequestLogin } from 'src/app/shared/models/IRequestLogin';
 import { AccountService } from 'src/app/shared/services/account.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
+      savePassword: [true]
     });
   }
 
@@ -36,8 +38,12 @@ export class LoginComponent implements OnInit {
     this._snackBar.open(message, action);
   }
 
-  async onSubmit() {
-    this.accountService.login(this.formulario.value).subscribe(
+  public onSubmit() {
+    const valuesToSend: IRequestLogin = {
+      username: this.formulario.value.username,
+      password: this.formulario.value.password
+    }
+    this.accountService.login(valuesToSend).subscribe(
       (values: any) => {
         window.localStorage.setItem('token', values.token)
         this.router.navigate([''])

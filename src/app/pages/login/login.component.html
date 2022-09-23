@@ -1,7 +1,7 @@
 <section class="container">
     <div class="card-login">
         <mat-card-title>
-            <img src="../../../assets/logo-medicar.png" />
+            <img src="../../../assets/logo-medicar-50.png" />
             <span>Medicar</span>
         </mat-card-title>
         <mat-card-content>
@@ -18,11 +18,24 @@
                             'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-                <mat-checkbox class="example-margin">Lembrar minha senha</mat-checkbox>
+                <mat-checkbox formControlName="savePassword" class="example-margin">Lembrar minha senha</mat-checkbox>
                 <div class="buttonSubmit">
-                    <button mat-button (click)="openRegister()">Criar conta</button>
-                    <button mat-raised-button [disabled]="!formulario.valid" type="submit"
-                        color="primary">Acessar</button>
+                    <button
+                        mat-stroked-button
+                        color="primary"
+                        (click)="openRegister()"
+                    >
+                        Criar conta
+                    </button>
+                    <button
+                        mat-raised-button
+                        [disabled]="!formulario.valid"
+                        type="submit"
+                        color="primary"
+                        class="buttonConfirm"
+                    >
+                        Acessar
+                    </button>
                 </div>
             </form>
         </mat-card-content>

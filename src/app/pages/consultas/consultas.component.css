@@ -1,0 +1,64 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 627px;
+    min-height: 100vh;
+}
+
+.header-medicar {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-medicar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #444444;
+    font-weight: 500;
+}
+
+.header-medicar span {
+    margin: 0px 40px 0px 6.25px;
+}
+
+mat-card {
+    min-height: 80vh;
+}
+
+mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-card-header mat-card-title {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.buttonNewConsulta {
+    color: white;
+    font-size: 14px;
+}
+
+mat-card-content {
+    margin-top: 20px;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+table th {
+    font-size: 13px;
+}

@@ -1,1 +1,68 @@
-<p>consultas works!</p>
+<main>
+    <section class="container">
+        <div class="header-medicar">
+            <div class="header-medicar-logo">
+                <img src="../../../assets/logo-medicar-25.png" />
+                <span>Medicar</span>
+            </div>
+            <div>
+                <span [style]="{'color': '#A8A8A8'}">Lucas Farias</span>
+                <button mat-button color="primary" (click)="logout()">Desconectar</button>
+            </div>
+        </div>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Consulta Clínica</mat-card-title>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    class="buttonNewConsulta"
+                    (click)="novaConsulta()"
+                >
+                    <mat-icon fontIcon="add"></mat-icon> Nova Consulta
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <table mat-table [dataSource]="consultasMarcadas" >
+
+                    <!-- Coluna especialidade -->
+                    <ng-container matColumnDef="especialidade">
+                        <th mat-header-cell *matHeaderCellDef> ESPECIALIDADE </th>
+                        <td mat-cell *matCellDef="let element"> {{element.especialidade}} </td>
+                    </ng-container>
+                    
+                    <!-- Coluna profissional -->
+                    <ng-container matColumnDef="profissional">
+                        <th mat-header-cell *matHeaderCellDef> PROFISSIONAL </th>
+                        <td mat-cell *matCellDef="let element"> {{element.profissional}} </td>
+                    </ng-container>
+                    
+                    <!-- Coluna data -->
+                    <ng-container matColumnDef="data">
+                        <th mat-header-cell *matHeaderCellDef> DATA </th>
+                        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+                    </ng-container>
+                    
+                    <!-- Coluna hora -->
+                    <ng-container matColumnDef="hora">
+                        <th mat-header-cell *matHeaderCellDef> HORA </th>
+                        <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
+                    </ng-container>
+                    
+                    <!-- Action -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-button color="primary" (click)="desmarcarConsulta(element.id)">
+                                <mat-icon fontIcon="close"></mat-icon> Desmarcar Consulta
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</main>

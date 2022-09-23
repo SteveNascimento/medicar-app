@@ -1,7 +1,7 @@
 <section class="container">
     <div class="card-login">
         <mat-card-title>
-            <img src="../../../assets/logo-medicar.png" />
+            <img src="../../../assets/logo-medicar-50.png" />
             <span>Medicar</span>
         </mat-card-title>
         <mat-card-content>
@@ -19,22 +19,43 @@
                     <mat-label>Senha</mat-label>
                     <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
                     <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">{{hidePassword ? 'visibility_off' :
-                            'visibility'}}</mat-icon>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">
+                            {{hidePassword ? 
+                                'visibility_off' :
+                                'visibility'
+                            }}
+                        </mat-icon>
                     </button>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <mat-label>Senha</mat-label>
+                    <mat-label>Confirmar Senha</mat-label>
                     <input matInput [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName='passwordConfirm'>
                     <button mat-icon-button matSuffix (click)="hidePasswordConfirm = !hidePasswordConfirm">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">{{hidePasswordConfirm ?
-                            'visibility_off' :
-                            'visibility'}}</mat-icon>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">
+                            {{hidePasswordConfirm ?
+                                'visibility_off' :
+                                'visibility'
+                            }}
+                        </mat-icon>
                     </button>
                 </mat-form-field>
                 <div class="buttonSubmit">
-                    <button mat-button (click)="cancel()">Cancelar</button>
-                    <button mat-raised-button [disabled]="!formulario.valid" type="submit" color="primary">Confirmar</button>
+                    <button
+                        mat-stroked-button
+                        (click)="cancel()"
+                        color="primary"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        mat-raised-button
+                        [disabled]="!formulario.valid"
+                        type="submit"
+                        color="primary"
+                        class="buttonConfirm"
+                    >
+                        Confirmar
+                    </button>
                 </div>
             </form>
         </mat-card-content>

@@ -50,6 +50,10 @@ mat-form-field {
     margin-top: 40px;
 }
 
-.buttonSubmit button {
+button {
     width: 180px;
+}
+
+.buttonConfirm:enabled {
+    color: white;
 }
