@@ -1,0 +1,33 @@
+.container {
+    width: 480px;
+    height: 420px;
+}
+
+.containerContent {
+    margin: 40px;
+}
+
+.titleNovaConsulta {
+    font-size: 20px;
+    font-weight: 500;
+    color: #444444;
+    margin-bottom: 40px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttonSubmit {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+button {
+    width: 180px;
+}
+
+.buttonConfirm:enabled {
+    color: white;
+}

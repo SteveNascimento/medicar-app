@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './shared/components/components.module';
+import { ConsultasService } from './shared/services/consultas.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     PagesModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

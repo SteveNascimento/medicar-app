@@ -1,0 +1,49 @@
+<section class="container">
+    <div class="containerContent">
+        <p class="titleNovaConsulta">
+            Nova Consulta
+        </p>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Especialidade</mat-label>
+                <mat-select formControlName="especialidade">
+                    <mat-option *ngFor="let especialidade of especialidades" [value]="especialidade.id">
+                        {{especialidade.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Médico</mat-label>
+                <mat-select formControlName="medicos">
+                    <mat-option *ngFor="let medico of medicos" [value]="medico.id">
+                        {{medico.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Dia</mat-label>
+                <mat-select formControlName="dia">
+                    <mat-option *ngFor="let agenda of agendas" [value]="agenda.id">
+                        {{agenda.dia}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hora</mat-label>
+                <mat-select formControlName="hora">
+                    <mat-option *ngFor="let hora of horas" [value]="hora">
+                        {{hora}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="buttonSubmit">
+                <button mat-stroked-button color="primary" mat-dialog-close>
+                    Cancelar
+                </button>
+                <button mat-raised-button [disabled]="!formulario.valid" type="submit" color="primary" class="buttonConfirm">
+                    Confirmar
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
