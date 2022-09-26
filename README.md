@@ -57,6 +57,10 @@
 Este projeto é um pequeno sistema com o objetivo de marcar e desmarcar consultas em uma clínica ou hospital, onde é possível especificar o
 médico responsável pelo atendimento, especialidade, dia e horário.
 
+### ⚠ Observação importante
+
+O backend apresenta um leve problema. Ao marcar uma nova consulta, o usuário seleciona uma especialidade e os médicos devem ser filtrados para mostrar apenas os que agregam a especialidade selecionada. Mas, não está filtrando e está retornando todos os médicos.
+
 ## :sparkles: Funcionalidades ##
 
 :heavy_check_mark: Marcar consultas;\
