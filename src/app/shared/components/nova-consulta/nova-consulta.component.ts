@@ -37,9 +37,6 @@ export class NovaConsultaComponent implements OnInit {
     this.consultasService.getEspecialidades().subscribe({
       next: (values) => {
         this.especialidades = values;
-      },
-      error: (error) => {
-        console.log(error);
       }
     });
   }
@@ -49,12 +46,8 @@ export class NovaConsultaComponent implements OnInit {
       agenda_id: this.formulario.value.dia.id,
       horario: this.formulario.value.hora
     }).subscribe({
-      next: (values) => {
+      next: () => {
         this._snackBar.open("Consulta marcada com sucesso!", "Dispensar");
-      },
-      error: (error) => {
-        this._snackBar.open("Erro ao marcar consulta!", "Dispensar");
-        console.log(error);
       }
     })
   }

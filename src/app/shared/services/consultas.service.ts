@@ -22,35 +22,71 @@ export class ConsultasService {
   ) { }
 
   public getConsultasAgendadas(): Observable<IConsulta[]> {
-    return this.httpServer.get<IConsulta[]>(`${this.API}/consultas`, {...this.accountService.getHeaders()});
+    return this.httpServer.get<IConsulta[]>(`${this.API}/consultas`, {...this.accountService.getHeaders()}).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
 
   public deleteConsulta(id: number): Observable<any> {
-    return this.httpServer.delete<any>(`${this.API}/consultas/${id}`, this.accountService.getHeaders());
+    return this.httpServer.delete<any>(`${this.API}/consultas/${id}`, this.accountService.getHeaders()).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
   
   public getEspecialidades(payload : {query: string} = {query: ''}): Observable<IEspecialidade[]> {
-    return this.httpServer.get<IEspecialidade[]>(`${this.API}/especialidades/?search=${payload.query}`, this.accountService.getHeaders());
+    return this.httpServer.get<IEspecialidade[]>(`${this.API}/especialidades/?search=${payload.query}`, this.accountService.getHeaders()).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
   
   public getMedicos(payload : {query: string, especialidade: string} = {query: '', especialidade: ''}): Observable<IMedico[]> {
     return this.httpServer.get<IMedico[]>(
         `${this.API}/medicos/?search=${payload.query}&especialidade=${payload.especialidade}`,
         this.accountService.getHeaders()
-      );
+      ).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
   
   public getAgendas(payload : {especialidade: string, medico: string} = {especialidade: '', medico: ''}): Observable<IAgenda[]> {
     return this.httpServer.get<IAgenda[]>(
         `${this.API}/agendas/?especialidade=${payload.especialidade}&medico=${payload.medico}`,
         this.accountService.getHeaders()
-      );
+      ).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
   
   public marcarConsulta(payload : {agenda_id: string, horario: string} = {agenda_id: '', horario: ''}): Observable<IResponseMarcarConsulta[]> {
     return this.httpServer.post<IResponseMarcarConsulta[]>(
         `${this.API}/consultas/`, { ...payload },
         this.accountService.getHeaders()
-      );
+      ).pipe(
+      catchError(err => {
+        this.accountService.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
 }

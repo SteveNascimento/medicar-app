@@ -76,10 +76,6 @@ export class RegisterComponent implements OnInit {
     this.accountService.register({...formToSend}).subscribe({
       next: () => {
         this.openSnackBar("Usuário criado com sucesso!", "Dispensar");
-      },
-      error: (error) => {
-        console.log(error);
-        this.openSnackBar("Algo deu errado! Tente novamente!", "Dispensar");
       }
     })
   }

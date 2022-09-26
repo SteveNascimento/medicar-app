@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IRequestLogin } from '../models/IRequestLogin';
-import { Observable, EMPTY, map, catchError } from 'rxjs'
+import { Observable, EMPTY, map, catchError, tap } from 'rxjs'
 import { IRequestRegister } from '../models/IRequestRegister';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IResponseLogin } from '../models/IResponseLogin';
@@ -34,8 +34,15 @@ export class AccountService {
   }
 
   public handleErrors(e: any) {
+    console.log(e);
     let codeError = e.status
     switch (codeError) {
+      case 0:
+        this._snackBar.open("Problema nos servidores!", "Dispensar")
+        break;
+      case 401:
+        this._snackBar.open("Usuário ou senha incorretos","Dispensar");
+        break
       case 403:
         this._snackBar.open("Acesso negado!", "Dispensar")
         break;
@@ -59,7 +66,13 @@ export class AccountService {
   }
 
   public login(user: IRequestLogin): Observable<IResponseLogin> { 
-    return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user});
+    return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user}).pipe(
+      catchError(err => {
+        this.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
 
   public logout() {
@@ -67,7 +80,13 @@ export class AccountService {
   }
   
   public register(user: IRequestRegister): Observable<IResponseRegister> {
-    return this.httpServer.post<IResponseRegister>(`${this.API}/users`, {...user});
+    return this.httpServer.post<IResponseRegister>(`${this.API}/users`, {...user}).pipe(
+      catchError(err => {
+        this.handleErrors(err)
+        throw err;
+      }),
+      map(value => value)
+    );
   }
 
 }

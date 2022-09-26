@@ -23,10 +23,6 @@ export class DeletarConsultaComponent implements OnInit {
     this.consultaService.deleteConsulta(this.data.consulta_id).subscribe({
       next: () => {
         this._snackBar.open("Consulta desmarcada com sucesso!", "Dispensar");
-      },
-      error: (error) => {
-        this._snackBar.open("Erro ao desmarcar consulta!", "Dispensar");
-        console.log(error);
       }
     })
   }

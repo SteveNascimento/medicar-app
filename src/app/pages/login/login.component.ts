@@ -35,10 +35,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
-  public openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
-
   public onSubmit() {
     const valuesToSend: IRequestLogin = {
       username: this.formulario.value.username,
@@ -50,7 +46,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate([''])
       },
       error: () => {
-        this.openSnackBar("Usuário ou senha incorretos","Dispensar");
         this.formulario.controls['username'].setErrors({'incorrect': true})
         this.formulario.controls['password'].setErrors({'incorrect': true})
       },
