@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
       password: this.formulario.value.password
     }
     this.accountService.login(valuesToSend).subscribe({
-      next: (values: any) => {
-        window.localStorage.setItem('token', values.token)
+      next: (values: {token: string}) => {
+        this.accountService.setToken(values.token);
         this.router.navigate([''])
       },
       error: () => {

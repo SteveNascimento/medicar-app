@@ -23,10 +23,14 @@ export class AccountService {
   public getToken() {
     let token = window.localStorage.getItem('token')
     if (token) {
-      return token;  
+      return token;
     } else {
       return '';
     }
+  }
+
+  public setToken(token: string) {
+    window.localStorage.setItem('token', token)
   }
 
   public handleErrors(e: any) {
@@ -58,7 +62,7 @@ export class AccountService {
     return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user});
   }
 
-  public logout() {    
+  public logout() {
     window.localStorage.removeItem('token');
   }
   
