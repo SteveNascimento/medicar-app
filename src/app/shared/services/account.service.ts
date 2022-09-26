@@ -34,7 +34,6 @@ export class AccountService {
   }
 
   public handleErrors(e: any) {
-    console.log(e);
     let codeError = e.status
     switch (codeError) {
       case 0:
