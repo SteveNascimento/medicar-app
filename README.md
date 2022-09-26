@@ -1,8 +1,7 @@
-
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Game" />
 
-  &#xa0;
+&#xa0;
 
   <!-- <a href="https://game.netlify.com">Demo</a> -->
 </div>
@@ -29,7 +28,7 @@
 
 <h4 align="center"> 
 	🚧  Medicar 🚀 Em construção...  🚧
-</h4> 
+</h4>
 
 <div align="center" style="display: inline_block"><br>
   <img align="center" alt="Java Script" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
@@ -52,7 +51,7 @@
   <a href="https://github.com/SteveNascimento" target="_blank">Autor</a>
 </p>
 
-## :dart: Sobre ##
+## :dart: Sobre
 
 Este projeto é um pequeno sistema com o objetivo de marcar e desmarcar consultas em uma clínica ou hospital, onde é possível especificar o
 médico responsável pelo atendimento, especialidade, dia e horário.
@@ -61,13 +60,15 @@ médico responsável pelo atendimento, especialidade, dia e horário.
 
 O backend apresenta um leve problema. Ao marcar uma nova consulta, o usuário seleciona uma especialidade e os médicos devem ser filtrados para mostrar apenas os que agregam a especialidade selecionada. Mas, não está filtrando e está retornando todos os médicos.
 
-## :sparkles: Funcionalidades ##
+## :sparkles: Funcionalidades
 
 :heavy_check_mark: Marcar consultas;\
 :heavy_check_mark: Desmarcar consultas;\
-:heavy_check_mark: Autenticação;
+:heavy_check_mark: Cadastro e Autenticação;
 
-## :rocket: Tecnologias ##
+Para cadastrar um novo usuário, a senha deve ter no mínimo 8 caracteres.
+
+## :rocket: Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -76,13 +77,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Angular Material](https://material.angular.io/)
 
-## :white_check_mark: Pré requisitos ##
+## :white_check_mark: Pré requisitos
 
 Antes de começar :checkered_flag:, você precisa ter o [Git](https://git-scm.com), [Node](https://nodejs.org/en/) e o [Angular](https://angular.io/) instalados em sua máquina.
 
+O Backend disponível para usar na aplicação é esse [aqui](https://github.com/Intmed-Software/desafio-mock-server), disponibilizado pelo time [Intmed](https://intmed.com.br/).
+
 Faça um clone do [Backend](https://github.com/Intmed-Software/desafio-mock-server) e siga os procedimentos relacionados para iniciá-lo.
 
-## :checkered_flag: Começando ##
+## :checkered_flag: Começando
 
 ```bash
 # Clone este repositório
@@ -100,10 +103,9 @@ $ ng serve
 # O app vai inicializar em <http://localhost:4200>
 ```
 
-## :memo: Licença ##
+## :memo: Licença
 
 Este projeto está sob licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
-
 
 Feito com :heart: por <a href="https://github.com/SteveNascimento" target="_blank">Steve</a>
 

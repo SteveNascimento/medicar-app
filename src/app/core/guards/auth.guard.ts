@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/services/account.service';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
 
   constructor( private router: Router, private accountService: AccountService) {}
 
-  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(): boolean {
 
     const token = this.accountService.getToken();
     if (token) {

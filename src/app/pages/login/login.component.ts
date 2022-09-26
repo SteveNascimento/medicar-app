@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
 import { IRequestLogin } from 'src/app/shared/models/IRequestLogin';
 import { AccountService } from 'src/app/shared/services/account.service';
 
@@ -19,8 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private formBuilder: FormBuilder
   ) { }
   
   ngOnInit(): void {

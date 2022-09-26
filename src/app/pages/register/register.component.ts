@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
     return validator;
   }
 
-
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       username: ['', Validators.required],
@@ -63,11 +62,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
-  public openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
-
-  async onSubmit() {
+  public onSubmit() {    
     const formToSend: IRequestRegister = {
       username: this.formulario.value.username,
       email: this.formulario.value.email,
@@ -75,7 +70,7 @@ export class RegisterComponent implements OnInit {
     }
     this.accountService.register({...formToSend}).subscribe({
       next: () => {
-        this.openSnackBar("Usuário criado com sucesso!", "Dispensar");
+        this._snackBar.open("Usuário criado com sucesso!", "Dispensar");
       }
     })
   }

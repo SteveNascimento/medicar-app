@@ -1,16 +1,9 @@
 import { IAgendaHoras } from "./IAgendaHoras"
+import { IMedico } from "./IMedico"
 
 export interface IAgenda {
-    id: number,
-    medico: {
-            id: number,
-            crm: number,
-            nome: string,
-            especialidade: {
-                id: number,
-                nome: string
-            }
-        },
-    dia: string,
-    horarios: IAgendaHoras[]
+    id: number;
+    medico: IMedico;
+    dia: string;
+    horarios: IAgendaHoras[];
 }

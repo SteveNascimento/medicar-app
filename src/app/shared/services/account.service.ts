@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IRequestLogin } from '../models/IRequestLogin';
-import { Observable, EMPTY, map, catchError, tap } from 'rxjs'
+import { Observable, EMPTY, map, catchError } from 'rxjs'
 import { IRequestRegister } from '../models/IRequestRegister';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IResponseLogin } from '../models/IResponseLogin';

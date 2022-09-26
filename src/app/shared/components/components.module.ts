@@ -18,7 +18,8 @@ import { DeletarConsultaComponent } from './deletar-consulta/deletar-consulta.co
     ReactiveFormsModule
   ],
   exports: [
-    NovaConsultaComponent
+    NovaConsultaComponent,
+    DeletarConsultaComponent
   ],
   providers: [
     ConsultasService
