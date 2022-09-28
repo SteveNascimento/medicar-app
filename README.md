@@ -95,7 +95,7 @@ $ git clone https://github.com/SteveNascimento/medicar-app
 $ cd medicar-app
 
 # Instale as dependências
-$ yarn
+$ npm install
 
 # Para iniciar o projeto
 $ ng serve
