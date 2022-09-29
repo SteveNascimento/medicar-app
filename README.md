@@ -98,7 +98,7 @@ $ cd medicar-app
 $ npm install
 
 # Para iniciar o projeto
-$ ng serve
+$ npm start
 
 # O app vai inicializar em <http://localhost:4200>
 ```
