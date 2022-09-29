@@ -71,6 +71,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.register({...formToSend}).subscribe({
       next: () => {
         this._snackBar.open("Usuário criado com sucesso!", "Dispensar");
+        this.router.navigate(['/login'])
       }
     })
   }

@@ -67,7 +67,7 @@ export class ConsultasComponent implements OnInit {
       id: element.id,
       especialidade: element.medico.especialidade.nome,
       profissional: element.medico.nome,
-      data: element.dia,
+      data: new Date(element.dia).toLocaleDateString(),
       hora: element.horario
     }));
   };

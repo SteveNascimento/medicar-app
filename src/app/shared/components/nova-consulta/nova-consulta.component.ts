@@ -71,7 +71,12 @@ export class NovaConsultaComponent implements OnInit {
     this.formulario.get('medicos')?.valueChanges.subscribe((value) => {
       this.consultasService.getAgendas({especialidade: this.formulario.value.especialidade, medico: value}).subscribe({
         next: (values) => {
-          this.agendas = values;
+          this.agendas = values.map(value => {
+            return({
+              ...value,
+              dia: new Date(value.dia).toLocaleDateString()
+            })
+          });
         }
       });
       if (value != '' && value != undefined) {
