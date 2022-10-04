@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IRequestRegister } from 'src/app/shared/models/IRequestRegister';
+import { IRequestRegister } from 'src/app/core/models/IRequestRegister';
 import { AccountService } from 'src/app/shared/services/account.service';
 
 @Component({

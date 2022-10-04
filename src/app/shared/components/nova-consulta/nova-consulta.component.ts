@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { IAgenda } from '../../models/IAgenda';
-import { IAgendaHoras } from '../../models/IAgendaHoras';
-import { IEspecialidade } from '../../models/IEspecialidade';
-import { IMedico } from '../../models/IMedico';
+import { IAgenda } from '../../../core/models/IAgenda';
+import { IAgendaHoras } from '../../../core/models/IAgendaHoras';
+import { IEspecialidade } from '../../../core/models/IEspecialidade';
+import { IMedico } from '../../../core/models/IMedico';
 import { ConsultasService } from '../../services/consultas.service';
 
 @Component({

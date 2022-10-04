@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DeletarConsultaComponent } from 'src/app/shared/components/deletar-consulta/deletar-consulta.component';
 import { NovaConsultaComponent } from 'src/app/shared/components/nova-consulta/nova-consulta.component';
-import { IConsulta } from 'src/app/shared/models/IConsulta';
-import { IConsultaTable } from 'src/app/shared/models/IConsultaTable';
+import { IConsulta } from 'src/app/core/models/IConsulta';
+import { IConsultaTable } from 'src/app/core/models/IConsultaTable';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { ConsultasService } from 'src/app/shared/services/consultas.service';
 

@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IRequestLogin } from '../models/IRequestLogin';
+import { IRequestLogin } from '../../core/models/IRequestLogin';
 import { Observable, EMPTY, map, catchError } from 'rxjs'
-import { IRequestRegister } from '../models/IRequestRegister';
+import { IRequestRegister } from '../../core/models/IRequestRegister';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { IResponseLogin } from '../models/IResponseLogin';
-import { IResponseRegister } from '../models/IResponseRegister';
+import { IResponseLogin } from '../../core/models/IResponseLogin';
+import { IResponseRegister } from '../../core/models/IResponseRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -60,14 +60,10 @@ export class AccountService {
     return EMPTY;
   }
 
-  public getHeaders() {
-    return ({headers: { "Authorization": `Token ${this.getToken()}` }});
-  }
-
   public login(user: IRequestLogin): Observable<IResponseLogin> { 
     return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user}).pipe(
       catchError(err => {
-        this.handleErrors(err)
+        this.handleErrors(err.status)
         throw err;
       }),
       map(value => value)
@@ -80,8 +76,8 @@ export class AccountService {
   
   public register(user: IRequestRegister): Observable<IResponseRegister> {
     return this.httpServer.post<IResponseRegister>(`${this.API}/users`, {...user}).pipe(
-      catchError(err => {
-        this.handleErrors(err)
+      catchError((err: {status: string}) => {
+        this.handleErrors(err.status)
         throw err;
       }),
       map(value => value)

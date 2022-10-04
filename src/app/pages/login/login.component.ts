@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IRequestLogin } from 'src/app/shared/models/IRequestLogin';
+import { IRequestLogin } from 'src/app/core/models/IRequestLogin';
 import { AccountService } from 'src/app/shared/services/account.service';
 
 @Component({
