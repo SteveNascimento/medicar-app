@@ -33,36 +33,27 @@ export class AccountService {
     window.localStorage.setItem('token', token)
   }
 
-  public handleErrors(e: any) {
-    let codeError = e.status
-    switch (codeError) {
-      case 0:
-        this._snackBar.open("Problema nos servidores!", "Dispensar")
-        break;
-      case 401:
-        this._snackBar.open("Usuário ou senha incorretos","Dispensar");
-        break
-      case 403:
-        this._snackBar.open("Acesso negado!", "Dispensar")
-        break;
-      case 404:
-        this._snackBar.open("Não encontrado!", "Dispensar")
-        break;
-      case 503:
-        this._snackBar.open("Serviço indisponível!", "Dispensar")
-        break;
-      case 504:
-        this._snackBar.open("Erro de conexão!", "Dispensar")
-        break;
-      default:
-        break;
+  public handleErrors(status: 0 | 401 | 403 | 404 | 503 | 504 ) {
+
+    const errors = {
+      0: "Problema nos servidores!",
+      401: "Usuário ou senha incorretos",
+      403: "Acesso negado!",
+      404: "Não encontrado!",
+      503: "Serviço indisponíveis",
+      504: "Erro de conexão!"
     }
+
+    this._snackBar.open(errors[status], "Dispensar")
+
     return EMPTY;
   }
 
   public login(user: IRequestLogin): Observable<IResponseLogin> { 
     return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user}).pipe(
       catchError(err => {
+        console.log(err.status);
+        
         this.handleErrors(err.status)
         throw err;
       }),
@@ -76,8 +67,10 @@ export class AccountService {
   
   public register(user: IRequestRegister): Observable<IResponseRegister> {
     return this.httpServer.post<IResponseRegister>(`${this.API}/users`, {...user}).pipe(
-      catchError((err: {status: string}) => {
-        this.handleErrors(err.status)
+      catchError(err => {
+        console.log(err.status);
+        
+        //this.handleErrors(err.status)
         throw err;
       }),
       map(value => value)
