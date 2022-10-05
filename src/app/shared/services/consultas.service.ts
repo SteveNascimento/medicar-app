@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable } from 'rxjs';
+import { HandleErrors } from 'src/app/core/helpers/HandleErrors';
 import { environment } from 'src/environments/environment';
 import { IAgenda } from '../../core/models/IAgenda';
 import { IConsulta } from '../../core/models/IConsulta';
 import { IEspecialidade } from '../../core/models/IEspecialidade';
 import { IMedico } from '../../core/models/IMedico';
 import { IResponseMarcarConsulta } from '../../core/models/IResponseMarcarConsulta';
-import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +18,13 @@ export class ConsultasService {
 
   constructor(
     private httpServer: HttpClient,
-    private accountService: AccountService
+    private errorsHandler: HandleErrors
   ) { }
 
   public getConsultasAgendadas(): Observable<IConsulta[]> {
     return this.httpServer.get<IConsulta[]>(`${this.API}/consultas`).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)
@@ -36,9 +34,7 @@ export class ConsultasService {
   public deleteConsulta(id: number): Observable<any> {
     return this.httpServer.delete<any>(`${this.API}/consultas/${id}`).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)
@@ -48,9 +44,7 @@ export class ConsultasService {
   public getEspecialidades(payload : {query: string} = {query: ''}): Observable<IEspecialidade[]> {
     return this.httpServer.get<IEspecialidade[]>(`${this.API}/especialidades/?search=${payload.query}`).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)
@@ -62,9 +56,7 @@ export class ConsultasService {
         `${this.API}/medicos/?search=${payload.query}&especialidade=${payload.especialidade}`
       ).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)
@@ -76,9 +68,7 @@ export class ConsultasService {
         `${this.API}/agendas/?especialidade=${payload.especialidade}&medico=${payload.medico}`
       ).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)
@@ -91,9 +81,7 @@ export class ConsultasService {
         { ...payload }
       ).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.accountService.handleErrors(err)
+        this.errorsHandler.showMessage(err)
         throw err;
       }),
       map(value => value)

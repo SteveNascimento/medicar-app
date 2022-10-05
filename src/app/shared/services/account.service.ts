@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IRequestLogin } from '../../core/models/IRequestLogin';
-import { Observable, EMPTY, map, catchError } from 'rxjs'
+import { Observable, map, catchError } from 'rxjs'
 import { IRequestRegister } from '../../core/models/IRequestRegister';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { IResponseLogin } from '../../core/models/IResponseLogin';
 import { IResponseRegister } from '../../core/models/IResponseRegister';
+import { HandleErrors } from 'src/app/core/helpers/HandleErrors';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AccountService {
 
   constructor(
     private httpServer: HttpClient,
-    private _snackBar: MatSnackBar,
+    private errorHandler: HandleErrors,
   ) { }
 
   public getToken() {
@@ -33,28 +33,10 @@ export class AccountService {
     window.localStorage.setItem('token', token)
   }
 
-  public handleErrors(status: 0 | 401 | 403 | 404 | 503 | 504 ) {
-
-    const errors = {
-      0: "Problema nos servidores!",
-      401: "Usuário ou senha incorretos",
-      403: "Acesso negado!",
-      404: "Não encontrado!",
-      503: "Serviço indisponíveis",
-      504: "Erro de conexão!"
-    }
-
-    this._snackBar.open(errors[status], "Dispensar")
-
-    return EMPTY;
-  }
-
   public login(user: IRequestLogin): Observable<IResponseLogin> { 
     return this.httpServer.post<IResponseLogin>(`${this.API}/users/login`,{...user}).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        this.handleErrors(err.status)
+        this.errorHandler.showMessage(err.status)
         throw err;
       }),
       map(value => value)
@@ -68,9 +50,7 @@ export class AccountService {
   public register(user: IRequestRegister): Observable<IResponseRegister> {
     return this.httpServer.post<IResponseRegister>(`${this.API}/users`, {...user}).pipe(
       catchError(err => {
-        console.log(err.status);
-        
-        //this.handleErrors(err.status)
+        this.errorHandler.showMessage(err.status)
         throw err;
       }),
       map(value => value)
